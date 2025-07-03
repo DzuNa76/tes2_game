@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'com.example.unityclasses'
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 33
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    // Include the JAR file as a dependency
+    api files('unity-classes.jar')
+}
+
+// Make sure the JAR is available as an artifact
+configurations.maybeCreate("default")
+artifacts.add("default", file('unity-classes.jar'))
